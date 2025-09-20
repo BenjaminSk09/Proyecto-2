@@ -100,3 +100,115 @@ function renderHistory() {
             <b>${p.name}</b> (PID: ${p.pid}) | Inicio: ${p.start} | Fin: ${p.finish}
         </div>`;
     });
+}
+
+// Iniciar simulación
+function startSimulation() {
+    // Inicializar variables
+    readyQueue = [];
+    history = [];
+    currentProcess = null;
+    currentTime = 0;
+
+    // Clonar procesos y ordenarlos por llegada
+    let procesosPendientes = procesos.map(p => ({ ...p, remaining: p.cpu, start: null, finish: null }));
+    procesosPendientes.sort((a, b) => a.arrival - b.arrival);
+
+    // Para fragmentos
+    let fragment = null;
+
+    simulationInterval = setInterval(() => {
+        // Agregar procesos que llegan en este instante
+        procesosPendientes
+            .filter(p => p.arrival === currentTime)
+            .forEach(p => readyQueue.push(p));
+        procesosPendientes = procesosPendientes.filter(p => p.arrival > currentTime);
+
+        // Seleccionar proceso según algoritmo
+        if (!currentProcess) {
+            if (readyQueue.length > 0) {
+                switch (selectedAlgorithm) {
+                    case "FCFS":
+                        currentProcess = readyQueue.shift();
+                        break;
+                    case "SJF": // no-preemptivo
+                        readyQueue.sort((a, b) => a.remaining - b.remaining);
+                        currentProcess = readyQueue.shift();
+                        break;
+                    case "SRTF":
+                        readyQueue.sort((a, b) => a.remaining - b.remaining);
+                        currentProcess = readyQueue.shift();
+                        if (currentProcess.start === null) currentProcess.start = currentTime;
+                        fragment = { pid: currentProcess.pid, name: currentProcess.name, start: currentTime, finish: null };
+                        break;
+                    case "RR":
+                        currentProcess = readyQueue.shift();
+                        currentProcess.quantumCounter = 0;
+                        // Abrir fragmento RR
+                        fragment = { pid: currentProcess.pid, name: currentProcess.name, start: currentTime, finish: null };
+                        break;
+                }
+            }
+        } else if (selectedAlgorithm === "SRTF") {
+            // Preempción para SRTF
+            if (readyQueue.length > 0) {
+                readyQueue.sort((a, b) => a.remaining - b.remaining);
+                if (readyQueue[0].remaining < currentProcess.remaining) {
+                    fragment.finish = currentTime;
+                    history.push({ ...fragment });
+                    readyQueue.push(currentProcess);
+                    currentProcess = readyQueue.shift();
+                    fragment = { pid: currentProcess.pid, name: currentProcess.name, start: currentTime, finish: null };
+                }
+            }
+        }
+
+        // Ejecutar proceso actual
+        if (currentProcess) {
+            currentProcess.remaining--;
+            if (selectedAlgorithm === "RR") {
+                currentProcess.quantumCounter++;
+            }
+
+            // Si termina el proceso
+            if (currentProcess.remaining === 0) {
+                if (selectedAlgorithm === "SRTF" || selectedAlgorithm === "RR") {
+                    fragment.finish = currentTime + 1;
+                    history.push({ ...fragment });
+                    fragment = null;
+                } else {
+                    currentProcess.finish = currentTime + 1;
+                    history.push(currentProcess);
+                }
+                currentProcess = null;
+            } else if (selectedAlgorithm === "RR" && currentProcess.quantumCounter >= quantum) {
+                // Termina quantum en RR
+                fragment.finish = currentTime; // termina fragmento actual
+                history.push({ ...fragment });
+                currentProcess.quantumCounter = 0;
+                readyQueue.push(currentProcess);
+                currentProcess = null;
+            }
+        }
+
+        renderReadyQueue();
+        renderRunningProcess();
+        renderHistory();
+
+        // Verificar fin de simulación
+        if (
+            procesosPendientes.length === 0 &&
+            readyQueue.length === 0 &&
+            !currentProcess
+        ) {
+            clearInterval(simulationInterval);
+            alert("Simulación finalizada.");
+        }
+
+        currentTime++;
+    }, TIME_UNIT_MS);
+
+    renderReadyQueue();
+    renderRunningProcess();
+    renderHistory();
+}
