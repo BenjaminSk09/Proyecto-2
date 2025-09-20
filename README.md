@@ -61,6 +61,20 @@ Este proyecto es un **simulador de planificación de procesos** desarrollado con
 
 ---
 
+**FCFS (First-Come, First-Served)** 
+
+- En proceso
+![image alt]([https://github.com/BenjaminSk09/Proyecto-1-Sistemas-operativos/blob/c29457c683a48a7f2e00f8df2f9e7efd15dea43c/Capturas%20de%20Funcionamiento/Memoria%20Ram%20normal.png](https://github.com/BenjaminSk09/Proyecto-2/blob/969608c192dadeb45cb7cb4058c1c78d2d6ec03d/Capturas%20de%20Funcionamiento/SRTF1.jpeg)) 
+
+- Finalizado
+![image alt]([https://github.com/BenjaminSk09/Proyecto-2/blob/969608c192dadeb45cb7cb4058c1c78d2d6ec03d/Capturas%20de%20Funcionamiento/SRTF2.jpeg)) 
+
+- Ejercicio Utilizado
+
+![image alt]([https://github.com/BenjaminSk09/Proyecto-2/blob/969608c192dadeb45cb7cb4058c1c78d2d6ec03d/Capturas%20de%20Funcionamiento/SRTFEJEMPLO.jpeg)) 
+
+---
+
 Integrantes del grupo:     
 
 -Esdras Alexander Choc Ajú         Carné: 1990-23-12485  
