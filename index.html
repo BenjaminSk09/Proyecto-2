@@ -54,3 +54,52 @@
                 </div>
             </form>
         </div>
+<!-- Selector de algoritmo y botón de simulación -->
+        <div class="mb-8 flex flex-col md:flex-row gap-4 items-center">
+            <div class="flex items-center gap-2">
+                <label for="algorithm" class="font-semibold">Algoritmo:</label>
+                <select id="algorithm" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    <option value="FCFS">FCFS</option>
+                    <option value="SJF">SJF</option>
+                    <option value="SRTF">SRTF</option>
+                    <option value="RR">Round Robin</option>
+                </select>
+            </div>
+            <button id="start-simulation"
+                class="bg-green-600 text-white py-2 px-4 rounded-md font-semibold hover:bg-green-700 transition-colors shadow-lg">
+                Iniciar Simulación
+            </button>
+        </div>
+
+        <!-- Tablero de simulación -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Cola de procesos listos -->
+            <div class="p-6 bg-yellow-50 border-yellow-200 border rounded-xl shadow-inner">
+                <h2 class="text-xl font-semibold text-yellow-700 mb-4">Cola de Listos</h2>
+                <div id="ready-queue" class="space-y-2 text-sm text-gray-700">
+                    <p class="text-gray-500">No hay procesos en la cola.</p>
+                </div>
+            </div>
+
+            <!-- Proceso en ejecución -->
+            <div class="p-6 bg-blue-50 border-blue-200 border rounded-xl shadow-inner">
+                <h2 class="text-xl font-semibold text-blue-700 mb-4">Proceso en Ejecución</h2>
+                <div id="running-process" class="text-base text-blue-900 font-mono">
+                    <p class="text-gray-500">Ningún proceso en ejecución.</p>
+                </div>
+            </div>
+
+            <!-- Historial de procesos -->
+            <div class="p-6 bg-green-50 border-green-200 border rounded-xl shadow-inner">
+                <h2 class="text-xl font-semibold text-green-700 mb-4">Historial de Procesos</h2>
+                <div id="history" class="space-y-2 text-sm text-gray-700">
+                    <p class="text-gray-500">No hay procesos finalizados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Javascript/procesos.js"></script>
+</body>
+
+</html>
