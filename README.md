@@ -60,9 +60,31 @@ Este proyecto es un **simulador de planificación de procesos** desarrollado con
 - **Tailwind CSS** (vía CDN)
 
 ---
+**Capturas de Funcionamiento**
 
 **FCFS (First-Come, First-Served)** 
+- En proceso
+![Logo](https://github.com/BenjaminSk09/Proyecto-2/blob/f5dc73661c66d40d67cbda71d1df5d01c5516bb8/Capturas%20de%20Funcionamiento/fcfs1.jpeg)
 
+- Finalizado
+![Logo](https://github.com/BenjaminSk09/Proyecto-2/blob/f5dc73661c66d40d67cbda71d1df5d01c5516bb8/Capturas%20de%20Funcionamiento/fcfs2.jpeg)
+
+- Ejercicio Utilizado
+![Logo](https://github.com/BenjaminSk09/Proyecto-2/blob/f5dc73661c66d40d67cbda71d1df5d01c5516bb8/Capturas%20de%20Funcionamiento/fcfsejemplo.jpeg)
+
+
+**SJF (Shortest Job First)**  
+- En proceso
+![Logo](https://github.com/BenjaminSk09/Proyecto-2/blob/f5dc73661c66d40d67cbda71d1df5d01c5516bb8/Capturas%20de%20Funcionamiento/sjf1.jpg)
+
+- Finalizado
+![Logo](https://github.com/BenjaminSk09/Proyecto-2/blob/f5dc73661c66d40d67cbda71d1df5d01c5516bb8/Capturas%20de%20Funcionamiento/sfj2.jpg)
+
+- Ejercicio Utilizado
+![Logo](https://github.com/BenjaminSk09/Proyecto-2/blob/f5dc73661c66d40d67cbda71d1df5d01c5516bb8/Capturas%20de%20Funcionamiento/sjfprueba.jpg)
+
+
+**SRTF (Shortest Remaining Time First)** 
 - En proceso
 ![Logo](https://github.com/BenjaminSk09/Proyecto-2/blob/8a90bd87bf055fafb429e12ed046e45ae8a80c4b/Capturas%20de%20Funcionamiento/SRTF1.jpeg)
 
@@ -71,6 +93,10 @@ Este proyecto es un **simulador de planificación de procesos** desarrollado con
 
 - Ejercicio Utilizado
 ![Logo](https://github.com/BenjaminSk09/Proyecto-2/blob/8a90bd87bf055fafb429e12ed046e45ae8a80c4b/Capturas%20de%20Funcionamiento/SRTFEJEMPLO.jpeg)
+
+
+
+
 
 ---
 
