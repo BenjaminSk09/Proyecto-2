@@ -1,0 +1,56 @@
+<!-- El siguiente codigo es un Simulador de Gestión de Procesos en Memoria -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Planificación de Procesos</title>
+    <!-- Etiqueta para llamar a tailwind y aplicar un css directamente desde las etiquetas de html, al ser un proyecto pequeño
+     Solo llame a el cdn de tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Contenedor principal del simulador -->
+    <div class="bg-white rounded-2xl shadow-2xl p-8 lg:p-12 w-full max-w-5xl">
+
+        <!-- Título y descripción -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Simulador de Planificación de Procesos</h1>
+            <p class="text-gray-500">Simula algoritmos de planificación: FCFS, SJF, SRTF y Round Robin.</p>
+        </div>
+
+        <!-- Formulario para crear nuevos procesos -->
+        <div class="mb-8 p-6 bg-blue-50 border-blue-200 border rounded-xl shadow-inner">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Agregar Proceso</h2>
+            <form id="process-form" class="grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
+                <div>
+                    <label for="process-name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                    <input type="text" id="process-name" placeholder="Ej: Editor" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                </div>
+                <div>
+                    <label for="process-cpu" class="block text-sm font-medium text-gray-700">Tiempo CPU (unidades)</label>
+                    <input type="number" id="process-cpu" value="2" min="1" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                </div>
+                <div>
+                    <label for="process-arrival" class="block text-sm font-medium text-gray-700">Instante de llegada</label>
+                    <input type="number" id="process-arrival" value="0" min="0" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                </div>
+                <div>
+                    <label for="process-quantum" class="block text-sm font-medium text-gray-700">Quantum</label>
+                    <input type="number" id="process-quantum" value="1" min="1"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md font-semibold hover:bg-blue-700 transition-colors shadow-lg">
+                        Agregar Proceso
+                    </button>
+                </div>
+            </form>
+        </div>
